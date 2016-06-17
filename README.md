@@ -3,7 +3,7 @@ CrystalStrike
 
 ## What
 
-CrystalStrike is...
+CrystalStrike is... a plugin that summon's structure during the lightning strike event.
 
 ## Commands
 
