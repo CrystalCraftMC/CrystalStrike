@@ -1,6 +1,6 @@
 name: CrystalStrike
 version: 0.1
 description: Get loot when lightning strikes!
-authors: [dellman135, jflory7]
+authors: [dellman135, _stevoism_, jflory7]
 website: https://github.com/CrystalCraftMC/CrystalStrike
 main: com.crystalcraftmc.crystalstrike.CrystalStrike
