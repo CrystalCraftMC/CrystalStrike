@@ -1,31 +1,32 @@
 CrystalStrike
 =============
 
+[![License: MPL 2.0](https://img.shields.io/badge/License-MPL%202.0-brightgreen.svg)](https://opensource.org/licenses/MPL-2.0)
+[![Build Status](https://travis-ci.org/CrystalCraftMC/CrystalStrike.svg?branch=master)](https://travis-ci.org/CrystalCraftMC/CrystalStrike)
+[![Maintainability](https://api.codeclimate.com/v1/badges/2188bd95e34b3959d97c/maintainability)](https://codeclimate.com/github/CrystalCraftMC/CrystalStrike/maintainability)
+
+
 ## What
 
-CrystalStrike is... a plugin that summon's structure during the lightning strike event.
+CrystalStrike is a Spigot plugin that summons a structure during a lightning
+strike event.
+
 
 ## Commands
 
 * /command1
- * info
+    * info
 * /command2
- * info
+    * info
+
 
 ## Permissions
 
 * _crystalstrike.perm_: Allows...
 
-## Legal
 
-**Unless otherwise stated**, everything in this repository can be assumed to fall under these two licenses depending on what type of file it is.
+## License
 
-### Code, scripts, playbooks, technical items
+This project is licensed under the [Mozilla Public License
+2.0](https://github.com/CrystalCraftMC/ChatPatch/blob/master/LICENSE.txt).
 
-All code, scripts, or other technical / programmatic items in this repo are assumed fall under the [Mozilla Public License 2.0](https://www.mozilla.org/en-US/MPL/) unless otherwise stated.
-
-### Guides, articles, posts, misc. content
-
-![Creative Commons Attribution-ShareAlike 4.0 International License](https://i.creativecommons.org/l/by-sa/4.0/88x31.png)
-
-All guides, scripts, posts, or otherwise non-programmatic content in this repo is assumed to fall under the [Creative Commons Attribution-ShareAlike 4.0 International](https://creativecommons.org/licenses/by-sa/4.0/) unless otherwise stated.
