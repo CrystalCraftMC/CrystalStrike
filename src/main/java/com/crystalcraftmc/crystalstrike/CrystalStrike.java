@@ -8,9 +8,9 @@
 
 package com.crystalcraftmc.crystalstrike;
 
-import org.bukkit.ChatColor;
-import org.bukkit.Location;
-import org.bukkit.Material;
+//import org.bukkit.ChatColor;
+//import org.bukkit.Location;
+//import org.bukkit.Material;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.weather.LightningStrikeEvent;
@@ -20,166 +20,40 @@ import org.bukkit.plugin.java.JavaPlugin;
 import java.util.Random;
 
 /**
- * CrystalStrike is a plugin that does...
+ * CrystalStrike is a plug-in that spawns a random crystal if all specifications are met with a chest of random items in the
+ * middle of it.
  *
- * @author dellman135
- * @version 2016.06.17.v1
+ * @author dellman135; JMW18
+ * @version 2016.06.17.v1;2017.08.14.v2
+ * 
+ * Suggestions: 1) Have crystal only spawn 25% of the time (coin simulator from APCS A would be good algorithm for controlling this) > Done
+ * 				2) Make something to Disable Program in game
  */
 public class CrystalStrike extends JavaPlugin implements Listener {
 
     @Override
     public void onEnable() {
-        this.getLogger().info("CrystalStrike has been enabled");
+        this.getLogger().info("CrystalStrike has been enabled!");
         PluginManager pm = getServer().getPluginManager();
         pm.registerEvents(this, this);
     }
 
     @EventHandler
-    public void onLightning(final LightningStrikeEvent e) {
-        Location baseLocation = e.getLightning().getLocation();
+    public void onLightning(final LightningStrikeEvent lightning) {
         this.getServer().getScheduler().scheduleSyncDelayedTask(this, new Runnable() {
             public void run() {
-                Random object = new Random();
-                int ccmc_strike;
-                for (int counter = 1; counter <= 1; counter++) {
-                    ccmc_strike = 1 + object.nextInt(2);
-
-                    if (ccmc_strike == 1) {
-                        Location baseLocation = e.getLightning().getLocation();
-
-                        e.getLightning().getLocation().getWorld().getBlockAt(baseLocation.getBlockX(), baseLocation.getBlockY(), baseLocation.getBlockZ()).setType(Material.LAVA);
-                        e.getLightning().getLocation().getWorld().getBlockAt(baseLocation.getBlockX() - 1, baseLocation.getBlockY(), baseLocation.getBlockZ()).setType(Material.PACKED_ICE);
-                        e.getLightning().getLocation().getWorld().getBlockAt(baseLocation.getBlockX() + 1, baseLocation.getBlockY(), baseLocation.getBlockZ()).setType(Material.PACKED_ICE);
-                        e.getLightning().getLocation().getWorld().getBlockAt(baseLocation.getBlockX(), baseLocation.getBlockY(), baseLocation.getBlockZ() + 1).setType(Material.PACKED_ICE);
-                        e.getLightning().getLocation().getWorld().getBlockAt(baseLocation.getBlockX(), baseLocation.getBlockY(), baseLocation.getBlockZ() - 1).setType(Material.PACKED_ICE);
-                        e.getLightning().getLocation().getWorld().getBlockAt(baseLocation.getBlockX() + 1, baseLocation.getBlockY(), baseLocation.getBlockZ() + 1).setType(Material.ICE);
-                        e.getLightning().getLocation().getWorld().getBlockAt(baseLocation.getBlockX() - 1, baseLocation.getBlockY(), baseLocation.getBlockZ() + 1).setType(Material.ICE);
-                        e.getLightning().getLocation().getWorld().getBlockAt(baseLocation.getBlockX() - 1, baseLocation.getBlockY(), baseLocation.getBlockZ() - 1).setType(Material.ICE);
-                        e.getLightning().getLocation().getWorld().getBlockAt(baseLocation.getBlockX() + 1, baseLocation.getBlockY(), baseLocation.getBlockZ() - 1).setType(Material.ICE);
-                        e.getLightning().getLocation().getWorld().getBlockAt(baseLocation.getBlockX(), baseLocation.getBlockY() + 1, baseLocation.getBlockZ()).setType(Material.OBSIDIAN);
-                        e.getLightning().getLocation().getWorld().getBlockAt(baseLocation.getBlockX(), baseLocation.getBlockY() - 1, baseLocation.getBlockZ()).setType(Material.OBSIDIAN);
-                    }
-                    else if (ccmc_strike == 2) {
-                        Location baseLocation = e.getLightning().getLocation();
-
-                        e.getLightning().getLocation().getWorld().getBlockAt(baseLocation.getBlockX(), baseLocation.getBlockY() + 6, baseLocation.getBlockZ()).setType(Material.OBSIDIAN);
-                        e.getLightning().getLocation().getWorld().getBlockAt(baseLocation.getBlockX(), baseLocation.getBlockY() + 5, baseLocation.getBlockZ()).setType(Material.PACKED_ICE);
-                        e.getLightning().getLocation().getWorld().getBlockAt(baseLocation.getBlockX(), baseLocation.getBlockY() + 5, baseLocation.getBlockZ()).setType(Material.PACKED_ICE);
-                        e.getLightning().getLocation().getWorld().getBlockAt(baseLocation.getBlockX(), baseLocation.getBlockY() + 5, baseLocation.getBlockZ() - 1).setType(Material.PACKED_ICE);
-                        e.getLightning().getLocation().getWorld().getBlockAt(baseLocation.getBlockX(), baseLocation.getBlockY() + 5, baseLocation.getBlockZ() + 1).setType(Material.ICE);
-                        e.getLightning().getLocation().getWorld().getBlockAt(baseLocation.getBlockX() - 1, baseLocation.getBlockY() + 5, baseLocation.getBlockZ()).setType(Material.OBSIDIAN);
-                        e.getLightning().getLocation().getWorld().getBlockAt(baseLocation.getBlockX(), baseLocation.getBlockY() + 4, baseLocation.getBlockZ()).setType(Material.OBSIDIAN);
-                        e.getLightning().getLocation().getWorld().getBlockAt(baseLocation.getBlockX(), baseLocation.getBlockY() + 4, baseLocation.getBlockZ() + 1).setType(Material.OBSIDIAN);
-                        e.getLightning().getLocation().getWorld().getBlockAt(baseLocation.getBlockX() + 1, baseLocation.getBlockY() + 4, baseLocation.getBlockZ()).setType(Material.ICE);
-                        e.getLightning().getLocation().getWorld().getBlockAt(baseLocation.getBlockX(), baseLocation.getBlockY() + 4, baseLocation.getBlockZ() - 1).setType(Material.ICE);
-                        e.getLightning().getLocation().getWorld().getBlockAt(baseLocation.getBlockX(), baseLocation.getBlockY() + 4, baseLocation.getBlockZ() + 1).setType(Material.OBSIDIAN);
-                        e.getLightning().getLocation().getWorld().getBlockAt(baseLocation.getBlockX() - 1, baseLocation.getBlockY() + 4, baseLocation.getBlockZ() + 1).setType(Material.ICE);
-                        e.getLightning().getLocation().getWorld().getBlockAt(baseLocation.getBlockX(), baseLocation.getBlockY() + 3, baseLocation.getBlockZ()).setType(Material.ICE);
-                        e.getLightning().getLocation().getWorld().getBlockAt(baseLocation.getBlockX() + 1, baseLocation.getBlockY() + 3, baseLocation.getBlockZ()).setType(Material.OBSIDIAN);
-                        e.getLightning().getLocation().getWorld().getBlockAt(baseLocation.getBlockX(), baseLocation.getBlockY() + 3, baseLocation.getBlockZ() - 1).setType(Material.OBSIDIAN);
-                        e.getLightning().getLocation().getWorld().getBlockAt(baseLocation.getBlockX(), baseLocation.getBlockY() + 3, baseLocation.getBlockZ() + 1).setType(Material.ICE);
-                        e.getLightning().getLocation().getWorld().getBlockAt(baseLocation.getBlockX() + 1, baseLocation.getBlockY() + 3, baseLocation.getBlockZ() + 1).setType(Material.ICE);
-                        e.getLightning().getLocation().getWorld().getBlockAt(baseLocation.getBlockX() - 1, baseLocation.getBlockY() + 3, baseLocation.getBlockZ()).setType(Material.PACKED_ICE);
-                        e.getLightning().getLocation().getWorld().getBlockAt(baseLocation.getBlockX() - 1, baseLocation.getBlockY() + 3, baseLocation.getBlockZ() - 1).setType(Material.OBSIDIAN);
-                        e.getLightning().getLocation().getWorld().getBlockAt(baseLocation.getBlockX() - 1, baseLocation.getBlockY() + 3, baseLocation.getBlockZ() + 1).setType(Material.OBSIDIAN);
-                        e.getLightning().getLocation().getWorld().getBlockAt(baseLocation.getBlockX(), baseLocation.getBlockY() + 2, baseLocation.getBlockZ()).setType(Material.OBSIDIAN);
-                        e.getLightning().getLocation().getWorld().getBlockAt(baseLocation.getBlockX(), baseLocation.getBlockY() + 2, baseLocation.getBlockZ() - 1).setType(Material.OBSIDIAN);
-                        e.getLightning().getLocation().getWorld().getBlockAt(baseLocation.getBlockX(), baseLocation.getBlockY() + 2, baseLocation.getBlockZ() + 1).setType(Material.OBSIDIAN);
-                        e.getLightning().getLocation().getWorld().getBlockAt(baseLocation.getBlockX(), baseLocation.getBlockY() + 2, baseLocation.getBlockZ() + 2).setType(Material.OBSIDIAN);
-                        e.getLightning().getLocation().getWorld().getBlockAt(baseLocation.getBlockX() + 1, baseLocation.getBlockY() + 2, baseLocation.getBlockZ()).setType(Material.OBSIDIAN);
-                        e.getLightning().getLocation().getWorld().getBlockAt(baseLocation.getBlockX() - 2, baseLocation.getBlockY() + 2, baseLocation.getBlockZ()).setType(Material.OBSIDIAN);
-                        e.getLightning().getLocation().getWorld().getBlockAt(baseLocation.getBlockX() - 1, baseLocation.getBlockY() + 2, baseLocation.getBlockZ()).setType(Material.ICE);
-                        e.getLightning().getLocation().getWorld().getBlockAt(baseLocation.getBlockX() - 1, baseLocation.getBlockY() + 2, baseLocation.getBlockZ() - 1).setType(Material.OBSIDIAN);
-                        e.getLightning().getLocation().getWorld().getBlockAt(baseLocation.getBlockX() - 1, baseLocation.getBlockY() + 2, baseLocation.getBlockZ() + 1).setType(Material.ICE);
-                        e.getLightning().getLocation().getWorld().getBlockAt(baseLocation.getBlockX() + 1, baseLocation.getBlockY() + 2, baseLocation.getBlockZ() - 1).setType(Material.OBSIDIAN);
-                        e.getLightning().getLocation().getWorld().getBlockAt(baseLocation.getBlockX() + 1, baseLocation.getBlockY() + 2, baseLocation.getBlockZ() + 1).setType(Material.OBSIDIAN);
-                        e.getLightning().getLocation().getWorld().getBlockAt(baseLocation.getBlockX(), baseLocation.getBlockY() + 1, baseLocation.getBlockZ()).setType(Material.OBSIDIAN);
-                        e.getLightning().getLocation().getWorld().getBlockAt(baseLocation.getBlockX() - 1, baseLocation.getBlockY() + 1, baseLocation.getBlockZ()).setType(Material.OBSIDIAN);
-                        e.getLightning().getLocation().getWorld().getBlockAt(baseLocation.getBlockX() - 2, baseLocation.getBlockY() + 1, baseLocation.getBlockZ()).setType(Material.PACKED_ICE);
-                        e.getLightning().getLocation().getWorld().getBlockAt(baseLocation.getBlockX(), baseLocation.getBlockY() + 1, baseLocation.getBlockZ() + 1).setType(Material.OBSIDIAN);
-                        e.getLightning().getLocation().getWorld().getBlockAt(baseLocation.getBlockX(), baseLocation.getBlockY() + 1, baseLocation.getBlockZ() + 2).setType(Material.ICE);
-                        e.getLightning().getLocation().getWorld().getBlockAt(baseLocation.getBlockX(), baseLocation.getBlockY() + 1, baseLocation.getBlockZ() - 1).setType(Material.OBSIDIAN);
-                        e.getLightning().getLocation().getWorld().getBlockAt(baseLocation.getBlockX(), baseLocation.getBlockY() + 1, baseLocation.getBlockZ() - 2).setType(Material.OBSIDIAN);
-                        e.getLightning().getLocation().getWorld().getBlockAt(baseLocation.getBlockX() - 1, baseLocation.getBlockY() + 1, baseLocation.getBlockZ() - 1).setType(Material.OBSIDIAN);
-                        e.getLightning().getLocation().getWorld().getBlockAt(baseLocation.getBlockX() - 2, baseLocation.getBlockY() + 1, baseLocation.getBlockZ() - 1).setType(Material.ICE);        e.getLightning().getLocation().getWorld().getBlockAt(baseLocation.getBlockX(), baseLocation.getBlockY() + 3, baseLocation.getBlockZ()).setType(Material.OBSIDIAN);
-                        e.getLightning().getLocation().getWorld().getBlockAt(baseLocation.getBlockX() - 1, baseLocation.getBlockY() + 1, baseLocation.getBlockZ() + 1).setType(Material.ICE);
-                        e.getLightning().getLocation().getWorld().getBlockAt(baseLocation.getBlockX() - 2, baseLocation.getBlockY() + 1, baseLocation.getBlockZ() + 1).setType(Material.OBSIDIAN);
-                        e.getLightning().getLocation().getWorld().getBlockAt(baseLocation.getBlockX() + 1, baseLocation.getBlockY() + 1, baseLocation.getBlockZ() + 1).setType(Material.OBSIDIAN);
-                        e.getLightning().getLocation().getWorld().getBlockAt(baseLocation.getBlockX() + 1, baseLocation.getBlockY() + 1, baseLocation.getBlockZ() - 1).setType(Material.OBSIDIAN);
-                        e.getLightning().getLocation().getWorld().getBlockAt(baseLocation.getBlockX() + 1, baseLocation.getBlockY() + 1, baseLocation.getBlockZ()).setType(Material.ICE);
-                        e.getLightning().getLocation().getWorld().getBlockAt(baseLocation.getBlockX() + 2, baseLocation.getBlockY() + 1, baseLocation.getBlockZ()).setType(Material.ICE);
-                        e.getLightning().getLocation().getWorld().getBlockAt(baseLocation.getBlockX(), baseLocation.getBlockY(), baseLocation.getBlockZ()).setType(Material.LAVA);
-                        e.getLightning().getLocation().getWorld().getBlockAt(baseLocation.getBlockX(), baseLocation.getBlockY(), baseLocation.getBlockZ() + 1).setType(Material.OBSIDIAN);
-                        e.getLightning().getLocation().getWorld().getBlockAt(baseLocation.getBlockX(), baseLocation.getBlockY(), baseLocation.getBlockZ() + 2).setType(Material.ICE);
-                        e.getLightning().getLocation().getWorld().getBlockAt(baseLocation.getBlockX() + 1, baseLocation.getBlockY(), baseLocation.getBlockZ()).setType(Material.OBSIDIAN);
-                        e.getLightning().getLocation().getWorld().getBlockAt(baseLocation.getBlockX() + 2, baseLocation.getBlockY(), baseLocation.getBlockZ()).setType(Material.ICE);
-                        e.getLightning().getLocation().getWorld().getBlockAt(baseLocation.getBlockX() - 1, baseLocation.getBlockY(), baseLocation.getBlockZ()).setType(Material.PACKED_ICE);
-                        e.getLightning().getLocation().getWorld().getBlockAt(baseLocation.getBlockX() - 2, baseLocation.getBlockY(), baseLocation.getBlockZ()).setType(Material.ICE);
-                        e.getLightning().getLocation().getWorld().getBlockAt(baseLocation.getBlockX() - 2, baseLocation.getBlockY(), baseLocation.getBlockZ() - 1).setType(Material.ICE);
-                        e.getLightning().getLocation().getWorld().getBlockAt(baseLocation.getBlockX() - 2, baseLocation.getBlockY(), baseLocation.getBlockZ() + 1).setType(Material.ICE);
-                        e.getLightning().getLocation().getWorld().getBlockAt(baseLocation.getBlockX() - 1, baseLocation.getBlockY(), baseLocation.getBlockZ() + 1).setType(Material.ICE);
-                        e.getLightning().getLocation().getWorld().getBlockAt(baseLocation.getBlockX() - 1, baseLocation.getBlockY(), baseLocation.getBlockZ() + 2).setType(Material.OBSIDIAN);
-                        e.getLightning().getLocation().getWorld().getBlockAt(baseLocation.getBlockX() - 1, baseLocation.getBlockY(), baseLocation.getBlockZ() - 1).setType(Material.OBSIDIAN);
-                        e.getLightning().getLocation().getWorld().getBlockAt(baseLocation.getBlockX() - 1, baseLocation.getBlockY(), baseLocation.getBlockZ() - 2).setType(Material.OBSIDIAN);
-                        e.getLightning().getLocation().getWorld().getBlockAt(baseLocation.getBlockX() + 1, baseLocation.getBlockY(), baseLocation.getBlockZ() - 1).setType(Material.PACKED_ICE);
-                        e.getLightning().getLocation().getWorld().getBlockAt(baseLocation.getBlockX() + 1, baseLocation.getBlockY(), baseLocation.getBlockZ() + 1).setType(Material.OBSIDIAN);
-                        e.getLightning().getLocation().getWorld().getBlockAt(baseLocation.getBlockX(), baseLocation.getBlockY(), baseLocation.getBlockZ() - 1).setType(Material.OBSIDIAN);
-                        e.getLightning().getLocation().getWorld().getBlockAt(baseLocation.getBlockX(), baseLocation.getBlockY(), baseLocation.getBlockZ() - 2).setType(Material.OBSIDIAN);
-                        e.getLightning().getLocation().getWorld().getBlockAt(baseLocation.getBlockX(), baseLocation.getBlockY() - 1, baseLocation.getBlockZ()).setType(Material.GLOWSTONE);
-                        e.getLightning().getLocation().getWorld().getBlockAt(baseLocation.getBlockX(), baseLocation.getBlockY() - 1, baseLocation.getBlockZ() + 1).setType(Material.ICE);
-                        e.getLightning().getLocation().getWorld().getBlockAt(baseLocation.getBlockX(), baseLocation.getBlockY() - 1, baseLocation.getBlockZ() + 2).setType(Material.OBSIDIAN);
-                        e.getLightning().getLocation().getWorld().getBlockAt(baseLocation.getBlockX(), baseLocation.getBlockY() - 1, baseLocation.getBlockZ() - 1).setType(Material.OBSIDIAN);
-                        e.getLightning().getLocation().getWorld().getBlockAt(baseLocation.getBlockX(), baseLocation.getBlockY() - 1, baseLocation.getBlockZ() - 2).setType(Material.OBSIDIAN);
-                        e.getLightning().getLocation().getWorld().getBlockAt(baseLocation.getBlockX() - 1, baseLocation.getBlockY() - 1, baseLocation.getBlockZ()).setType(Material.PACKED_ICE);
-                        e.getLightning().getLocation().getWorld().getBlockAt(baseLocation.getBlockX() - 2, baseLocation.getBlockY() - 1, baseLocation.getBlockZ()).setType(Material.OBSIDIAN);
-                        e.getLightning().getLocation().getWorld().getBlockAt(baseLocation.getBlockX() + 1, baseLocation.getBlockY() - 1, baseLocation.getBlockZ()).setType(Material.ICE);
-                        e.getLightning().getLocation().getWorld().getBlockAt(baseLocation.getBlockX() + 2, baseLocation.getBlockY() - 1, baseLocation.getBlockZ()).setType(Material.OBSIDIAN);
-                        e.getLightning().getLocation().getWorld().getBlockAt(baseLocation.getBlockX() + 2, baseLocation.getBlockY() - 1, baseLocation.getBlockZ() + 1).setType(Material.OBSIDIAN);
-                        e.getLightning().getLocation().getWorld().getBlockAt(baseLocation.getBlockX() + 2, baseLocation.getBlockY() - 1, baseLocation.getBlockZ() + 2).setType(Material.OBSIDIAN);
-                        e.getLightning().getLocation().getWorld().getBlockAt(baseLocation.getBlockX() + 2, baseLocation.getBlockY(), baseLocation.getBlockZ() + 1).setType(Material.OBSIDIAN);
-                        e.getLightning().getLocation().getWorld().getBlockAt(baseLocation.getBlockX() + 1, baseLocation.getBlockY() - 1, baseLocation.getBlockZ() + 1).setType(Material.OBSIDIAN);
-                        e.getLightning().getLocation().getWorld().getBlockAt(baseLocation.getBlockX() + 2, baseLocation.getBlockY(), baseLocation.getBlockZ() + 1).setType(Material.OBSIDIAN);
-                        e.getLightning().getLocation().getWorld().getBlockAt(baseLocation.getBlockX() + 1, baseLocation.getBlockY() - 1, baseLocation.getBlockZ() + 2).setType(Material.OBSIDIAN);
-                        e.getLightning().getLocation().getWorld().getBlockAt(baseLocation.getBlockX() + 2, baseLocation.getBlockY(), baseLocation.getBlockZ() + 1).setType(Material.OBSIDIAN);
-                        e.getLightning().getLocation().getWorld().getBlockAt(baseLocation.getBlockX() + 2, baseLocation.getBlockY() - 1, baseLocation.getBlockZ() - 1).setType(Material.OBSIDIAN);
-                        e.getLightning().getLocation().getWorld().getBlockAt(baseLocation.getBlockX() + 2, baseLocation.getBlockY(), baseLocation.getBlockZ() + 1).setType(Material.OBSIDIAN);
-                        e.getLightning().getLocation().getWorld().getBlockAt(baseLocation.getBlockX() + 1, baseLocation.getBlockY() - 1, baseLocation.getBlockZ() - 1).setType(Material.OBSIDIAN);
-                        e.getLightning().getLocation().getWorld().getBlockAt(baseLocation.getBlockX() + 2, baseLocation.getBlockY(), baseLocation.getBlockZ() + 1).setType(Material.OBSIDIAN);
-                        e.getLightning().getLocation().getWorld().getBlockAt(baseLocation.getBlockX() + 1, baseLocation.getBlockY() - 1, baseLocation.getBlockZ() - 2).setType(Material.ICE);
-                        e.getLightning().getLocation().getWorld().getBlockAt(baseLocation.getBlockX() - 1, baseLocation.getBlockY() - 1, baseLocation.getBlockZ() - 2).setType(Material.OBSIDIAN);
-                        e.getLightning().getLocation().getWorld().getBlockAt(baseLocation.getBlockX() - 2, baseLocation.getBlockY() - 1, baseLocation.getBlockZ() - 2).setType(Material.OBSIDIAN);
-                        e.getLightning().getLocation().getWorld().getBlockAt(baseLocation.getBlockX() - 1, baseLocation.getBlockY() - 1, baseLocation.getBlockZ() - 1).setType(Material.OBSIDIAN);
-                        e.getLightning().getLocation().getWorld().getBlockAt(baseLocation.getBlockX() - 2, baseLocation.getBlockY() - 1, baseLocation.getBlockZ() - 1).setType(Material.OBSIDIAN);
-                        e.getLightning().getLocation().getWorld().getBlockAt(baseLocation.getBlockX() - 1, baseLocation.getBlockY() - 1, baseLocation.getBlockZ() + 2).setType(Material.OBSIDIAN);
-                        e.getLightning().getLocation().getWorld().getBlockAt(baseLocation.getBlockX() - 2, baseLocation.getBlockY() - 1, baseLocation.getBlockZ() + 2).setType(Material.OBSIDIAN);
-                        e.getLightning().getLocation().getWorld().getBlockAt(baseLocation.getBlockX() - 1, baseLocation.getBlockY() - 1, baseLocation.getBlockZ() + 1).setType(Material.OBSIDIAN);
-                        e.getLightning().getLocation().getWorld().getBlockAt(baseLocation.getBlockX() - 2, baseLocation.getBlockY() - 1, baseLocation.getBlockZ() + 1).setType(Material.OBSIDIAN);
-                        e.getLightning().getLocation().getWorld().getBlockAt(baseLocation.getBlockX(), baseLocation.getBlockY() - 2, baseLocation.getBlockZ()).setType(Material.OBSIDIAN);
-                        e.getLightning().getLocation().getWorld().getBlockAt(baseLocation.getBlockX() + 1, baseLocation.getBlockY() - 2, baseLocation.getBlockZ()).setType(Material.OBSIDIAN);
-                        e.getLightning().getLocation().getWorld().getBlockAt(baseLocation.getBlockX() + 2, baseLocation.getBlockY() - 2, baseLocation.getBlockZ()).setType(Material.OBSIDIAN);
-                        e.getLightning().getLocation().getWorld().getBlockAt(baseLocation.getBlockX() - 1, baseLocation.getBlockY() - 2, baseLocation.getBlockZ()).setType(Material.ICE);
-                        e.getLightning().getLocation().getWorld().getBlockAt(baseLocation.getBlockX(), baseLocation.getBlockY() - 2, baseLocation.getBlockZ() + 1).setType(Material.OBSIDIAN);
-                        e.getLightning().getLocation().getWorld().getBlockAt(baseLocation.getBlockX(), baseLocation.getBlockY() - 2, baseLocation.getBlockZ() + 1).setType(Material.OBSIDIAN);
-                        // ^ I MAY NEED TO BE FIXED
-                        e.getLightning().getLocation().getWorld().getBlockAt(baseLocation.getBlockX(), baseLocation.getBlockY() - 2, baseLocation.getBlockZ() - 2).setType(Material.OBSIDIAN);
-                        e.getLightning().getLocation().getWorld().getBlockAt(baseLocation.getBlockX(), baseLocation.getBlockY() - 2, baseLocation.getBlockZ() + 2).setType(Material.OBSIDIAN);
-                        e.getLightning().getLocation().getWorld().getBlockAt(baseLocation.getBlockX() + 1, baseLocation.getBlockY() - 2, baseLocation.getBlockZ() + 2).setType(Material.OBSIDIAN);
-                        e.getLightning().getLocation().getWorld().getBlockAt(baseLocation.getBlockX() + 1, baseLocation.getBlockY() - 2, baseLocation.getBlockZ() + 1).setType(Material.OBSIDIAN);
-                        e.getLightning().getLocation().getWorld().getBlockAt(baseLocation.getBlockX() + 2, baseLocation.getBlockY() - 2, baseLocation.getBlockZ() + 1).setType(Material.ICE);
-                        e.getLightning().getLocation().getWorld().getBlockAt(baseLocation.getBlockX() + 1, baseLocation.getBlockY() - 2, baseLocation.getBlockZ() + 1).setType(Material.PACKED_ICE);
-                        e.getLightning().getLocation().getWorld().getBlockAt(baseLocation.getBlockX() - 1, baseLocation.getBlockY() - 2, baseLocation.getBlockZ() - 1).setType(Material.ICE);
-                        e.getLightning().getLocation().getWorld().getBlockAt(baseLocation.getBlockX() - 1, baseLocation.getBlockY() - 2, baseLocation.getBlockZ() - 2).setType(Material.ICE);
-                        e.getLightning().getLocation().getWorld().getBlockAt(baseLocation.getBlockX() - 1, baseLocation.getBlockY() - 2, baseLocation.getBlockZ() + 1).setType(Material.OBSIDIAN);
-                        e.getLightning().getLocation().getWorld().getBlockAt(baseLocation.getBlockX() - 2, baseLocation.getBlockY() - 2, baseLocation.getBlockZ() + 1).setType(Material.ICE);
-                        e.getLightning().getLocation().getWorld().getBlockAt(baseLocation.getBlockX() - 1, baseLocation.getBlockY() - 3, baseLocation.getBlockZ()).setType(Material.OBSIDIAN);        e.getLightning().getLocation().getWorld().getBlockAt(baseLocation.getBlockX(), baseLocation.getBlockY() - 2, baseLocation.getBlockZ()).setType(Material.PACKED_ICE);
-                        e.getLightning().getLocation().getWorld().getBlockAt(baseLocation.getBlockX(), baseLocation.getBlockY() - 3, baseLocation.getBlockZ() - 1).setType(Material.PACKED_ICE);
-                        e.getLightning().getLocation().getWorld().getBlockAt(baseLocation.getBlockX(), baseLocation.getBlockY() - 3, baseLocation.getBlockZ() + 1).setType(Material.OBSIDIAN);
-                        e.getLightning().getLocation().getWorld().getBlockAt(baseLocation.getBlockX() + 1, baseLocation.getBlockY() - 3, baseLocation.getBlockZ() + 1).setType(Material.OBSIDIAN);
-                        e.getLightning().getLocation().getWorld().getBlockAt(baseLocation.getBlockX(), baseLocation.getBlockY() - 3, baseLocation.getBlockZ()).setType(Material.PACKED_ICE);
-                        e.getLightning().getLocation().getWorld().getBlockAt(baseLocation.getBlockX(), baseLocation.getBlockY() - 4, baseLocation.getBlockZ()).setType(Material.OBSIDIAN);
-
-                    }
-                }
+            	if(Math.random() <= 0.25){
+            		 Random randNum = new Random();
+                     int ccmc_strike = randNum.nextInt(2);
+                     BuildCrystal build = new BuildCrystal(lightning);
+                     
+                     if (ccmc_strike == 0) {
+                         build.firstCrystal();
+                     }
+                     else if (ccmc_strike == 1) {
+                        build.secondCrystal();
+                     }
+            	} 
             }
         }, 20L);
 
