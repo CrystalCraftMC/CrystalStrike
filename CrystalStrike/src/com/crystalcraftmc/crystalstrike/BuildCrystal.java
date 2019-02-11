@@ -17,7 +17,7 @@ import org.bukkit.inventory.ItemStack;
 
 public class BuildCrystal {
 	
-	private Location baseLocation;
+	 private Location baseLocation;
 	private final LightningStrikeEvent event;
 	
 	public BuildCrystal(final LightningStrikeEvent e){
