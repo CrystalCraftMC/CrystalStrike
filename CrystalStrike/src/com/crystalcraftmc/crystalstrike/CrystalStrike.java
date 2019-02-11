@@ -14,7 +14,7 @@ import org.bukkit.event.weather.LightningStrikeEvent;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
 
-import java.util.Random;
+//import java.util.Random;
 
 /**
  * CrystalStrike is a plug-in that spawns a random crystal if all specifications are met with a chest of random items in the
@@ -40,8 +40,8 @@ public class CrystalStrike extends JavaPlugin implements Listener {
         this.getServer().getScheduler().scheduleSyncDelayedTask(this, new Runnable() {
             public void run() {
             	if(Math.random() <= 0.25){
-            		 Random randNum = new Random();
-                     int ccmc_strike = randNum.nextInt(2);
+            		 //Random randNum = new Random();
+                     int ccmc_strike = 0;//randNum.nextInt(2);
                      BuildCrystal build = new BuildCrystal(lightning);
                      
                      if (ccmc_strike == 0) {

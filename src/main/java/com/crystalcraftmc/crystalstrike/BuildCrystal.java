@@ -1,10 +1,5 @@
 package com.crystalcraftmc.crystalstrike;
 
-//import org.bukkit.plugin.PluginManager;
-//import org.bukkit.plugin.java.JavaPlugin;
-//import org.bukkit.ChatColor;
-//import org.bukkit.event.EventHandler;
-//import org.bukkit.event.Listener;
 import org.bukkit.Material;
 import org.bukkit.block.Block;
 import org.bukkit.block.Chest;
@@ -43,6 +38,22 @@ public class BuildCrystal {
         event.getLightning().getLocation().getWorld().getBlockAt(baseLocation.getBlockX() + 1, baseLocation.getBlockY(), baseLocation.getBlockZ() - 1).setType(Material.ICE);//1,60,-1
         event.getLightning().getLocation().getWorld().getBlockAt(baseLocation.getBlockX(), baseLocation.getBlockY() + 1, baseLocation.getBlockZ()).setType(Material.OBSIDIAN);//0,61,0
         event.getLightning().getLocation().getWorld().getBlockAt(baseLocation.getBlockX(), baseLocation.getBlockY() - 1, baseLocation.getBlockZ()).setType(Material.OBSIDIAN);//0,59,0
+        
+        Location [] xCords = {baseLocation.getBlockX(), baseLocation.getBlockX()-1, baseLocation.getBlockX()+1, baseLocation.getBlockX(), baseLocation.getBlockX(), baseLocation.getBlockX()+1,
+        		              baseLocation.getBlockX()-1, baseLocation.getBlockX()-1, baseLocation.getBlockX()+1, baseLocation.getBlockX(), baseLocation.getBlockX()};
+        
+        Location [] yCords = {baseLocation.getBlockY(), baseLocation.getBlockY(), baseLocation.getBlockY(), baseLocation.getBlockY(), baseLocation.getBlockY(), baseLocation.getBlockY(),
+	                          baseLocation.getBlockY(), baseLocation.getBlockY(), baseLocation.getBlockY(), baseLocation.getBlockY()+1, baseLocation.getBlockY()-1};
+        
+        Location [] zCords = {baseLocation.getBlockZ(), baseLocation.getBlockZ(), baseLocation.getBlockZ(), baseLocation.getBlockZ()+1, baseLocation.getBlockZ()-1, baseLocation.getBlockZ()+1,
+	                          baseLocation.getBlockZ()+1, baseLocation.getBlockZ()-1, baseLocation.getBlockZ()-1, baseLocation.getBlockZ(), baseLocation.getBlockZ()};
+        
+        Material [] mats = {Material.CHEST, Material.PACKED_ICE, Material.PACKED_ICE, Material.PACKED_ICE, Material.PACKED_ICE, Material.ICE, Material.ICE, Material.ICE, Material.ICE, Material.OBSIDIAN, Material.OBSIDIAN};
+        
+        for(int index = 0; index < xCords.length; index++) {
+        	event.getLightning().getLocation().getWorld().getBlockAt(xCords[index], yCords[index], zCords[index]).setType(mats[index]);
+        }
+        
         
         //Adding items to the chest...how do we want to do this?
         Block block = baseLocation.getBlock();
